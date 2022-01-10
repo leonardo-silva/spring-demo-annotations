@@ -8,8 +8,21 @@ public class VolleyCoach implements Coach {
 
 	private FortuneService fortuneService;
 
+	public VolleyCoach() {
+		System.out.println("VolleyCoach - inside default constructor");
+	}
+	
+	/*
 	@Autowired
 	public VolleyCoach(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+	*/
+
+	// define a setter method
+	@Autowired
+	public void setFortuneService(FortuneService fortuneService) {
+		System.out.println("VolleyCoach - inside setFortuneService()");
 		this.fortuneService = fortuneService;
 	}
 
