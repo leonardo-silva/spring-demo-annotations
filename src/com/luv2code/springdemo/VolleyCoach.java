@@ -19,10 +19,10 @@ public class VolleyCoach implements Coach {
 	}
 	*/
 
-	// define a setter method
+	// define a method with @Autowired annotation
 	@Autowired
-	public void setFortuneService(FortuneService fortuneService) {
-		System.out.println("VolleyCoach - inside setFortuneService()");
+	public void doSomeCrazyStuff(FortuneService fortuneService) {
+		System.out.println("VolleyCoach - inside doSomeCrazyStuff()");
 		this.fortuneService = fortuneService;
 	}
 
