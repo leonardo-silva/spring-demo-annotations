@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,24 +18,23 @@ public class FileFortuneService implements FortuneService {
 	// create a random number generator
 	private Random myRandom = new Random();
 
-	public FileFortuneService() {
-		String data = this.readFortunesFromFile();
-		dataArray = data.split("\n");
-	}
-
 	// Java 11 implementation
-	private String readFortunesFromFile() {
-		String actual="";
+	@PostConstruct
+	private void readFortunesFromFile() {
+		System.out.println(">> FileFortuneService: Inside PostConstruct method");
+		
+		String data="";
 		
 		Path fileName = Path.of("fortunes.txt");
 	    try {
-		    actual = Files.readString(fileName);
+	    	data = Files.readString(fileName);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
+	    this.dataArray = data.split("\n");
 
-	    return actual;
 	}
 	
 	@Override
